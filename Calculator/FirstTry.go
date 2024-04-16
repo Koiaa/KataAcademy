@@ -31,12 +31,11 @@ func calc() string {
 		counter++
 		a, err = strconv.Atoi(rim[aStr])
 		if err != nil {
-			fmt.Println("Ошибка конвертации a", a)
-			return aStr
+			panic("Ошибка конвертации a")
 		}
 	} else if a < 1 || a > 10 {
-		fmt.Println("Вводимое число меньше 1 или больше 10")
-		return aStr
+		panic("Вводимое число меньше 1 или больше 10")
+
 	}
 
 	b, err := strconv.Atoi(bStr)
@@ -44,17 +43,17 @@ func calc() string {
 		counter++
 		b, err = strconv.Atoi(rim[bStr])
 		if err != nil {
-			fmt.Println("Ошибка конвертации b", b)
-			return bStr
+			panic("Ошибка конвертации b")
+
 		}
 	} else if b < 1 || b > 10 {
-		fmt.Println("Вводимое число меньше 1 или больше 10")
-		return bStr
+		panic("Вводимое число меньше 1 или больше 10")
+
 	}
 
 	if counter == 1 {
-		fmt.Println("Ошибка. Необходимо использовать числа одного алфавита", aStr)
-		return bStr
+		panic("Ошибка. Необходимо использовать числа одного алфавита")
+
 	}
 
 	switch op {
@@ -67,13 +66,13 @@ func calc() string {
 	case "/":
 		ans = a / b
 	default:
-		fmt.Println("Введен неверный оператор:")
-		return op
+		panic("Введен неверный оператор:")
+
 	}
 
 	if counter == 2 && ans < 1 {
-		fmt.Println("Ответ с использованием римских цифр не может быть отрицательным", aStr)
-		return bStr
+		panic("Ответ с использованием римских цифр не может быть отрицательным")
+
 	}
 
 	if counter == 2 {
